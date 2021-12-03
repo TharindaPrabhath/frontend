@@ -5,13 +5,12 @@ import { Theme } from "@mui/material/styles";
 
 // components
 import TodoCard from "../components/TodoCard";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-// axios
-import axios from "../utils/axios";
-
-// models
-import Todo from "../models/Todo";
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { State } from "../state/reducers";
+import { getTodos } from "../state/actions/todo";
 
 const useStyles = makeStyles((theme: Theme) => ({
   box: {
@@ -30,17 +29,20 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  // const [todos, setTodos] = useState<Todo[]>([]);
+  const dispatch = useDispatch();
+  const todos = useSelector((state: State) => state.todo.todos);
   const classes = useStyles();
 
   useEffect(() => {
-    axios
-      .get("/todos")
-      .then((res) => {
-        setTodos(res.data as Todo[]);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    dispatch(getTodos());
+    // axios
+    //   .get("/todos")
+    //   .then((res) => {
+    //     setTodos(res.data as Todo[]);
+    //   })
+    //   .catch((err) => console.error(err));
+  }, [dispatch]);
 
   return (
     <Box className={classes.box}>
