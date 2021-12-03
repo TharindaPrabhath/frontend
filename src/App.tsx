@@ -16,27 +16,33 @@ import Layout from "./components/Layout";
 import theme from "./theme";
 import Loader from "./components/Loader";
 
+// redux
+import { Provider } from "react-redux";
+import { store } from "./state/store";
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div className="App">
-          <Layout>
-            <Suspense fallback={<Loader />}>
-              <Routes>
-                {ROUTES.map((route, index) => {
-                  return (
-                    <Route
-                      path={route.path}
-                      element={<route.component />}
-                      key={index}
-                    />
-                  );
-                })}
-              </Routes>
-            </Suspense>
-          </Layout>
-        </div>
+        <Provider store={store}>
+          <div className="App">
+            <Layout>
+              <Suspense fallback={<Loader />}>
+                <Routes>
+                  {ROUTES.map((route, index) => {
+                    return (
+                      <Route
+                        path={route.path}
+                        element={<route.component />}
+                        key={index}
+                      />
+                    );
+                  })}
+                </Routes>
+              </Suspense>
+            </Layout>
+          </div>
+        </Provider>
       </Router>
     </ThemeProvider>
   );
