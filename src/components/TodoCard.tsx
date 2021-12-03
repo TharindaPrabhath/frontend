@@ -18,6 +18,10 @@ import red from "@mui/material/colors/red";
 import Todo from "../models/Todo";
 import { isEmpty } from "../utils";
 
+// redux
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../state/actions/todo";
+
 const useStyles = makeStyles((theme: Theme) => ({
   card: {
     padding: "1em 0.5em",
@@ -47,10 +51,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default function TodoCard({ todo }: { todo: Todo }) {
+  const dispatch = useDispatch();
   const classes = useStyles();
+
   const handleDelete = () => {
-    
-  }
+    dispatch(deleteTodo(todo._id));
+  };
+
   return (
     <Card className={classes.card}>
       <Typography variant="h6" fontSize="1em">
@@ -66,14 +73,14 @@ export default function TodoCard({ todo }: { todo: Todo }) {
             <Typography variant="h6" fontSize="0.8em">
               created
             </Typography>
-            <Typography fontSize="0.8em">2020.03.12</Typography>
+            <Typography fontSize="0.8em">{todo.createdAt}</Typography>
           </Box>
           {todo.isUpdated && (
             <Box className={classes.row}>
               <Typography variant="h6" fontSize="0.8em">
                 updated
               </Typography>
-              <Typography fontSize="0.8em">2020.03.12</Typography>
+              <Typography fontSize="0.8em">{todo.updatedAt}</Typography>
             </Box>
           )}
         </Box>
@@ -84,7 +91,7 @@ export default function TodoCard({ todo }: { todo: Todo }) {
             </IconButton>
           </Tooltip>
           <Tooltip title="Delete">
-            <IconButton className={classes.deleteBtn}>
+            <IconButton className={classes.deleteBtn} onClick={handleDelete}>
               <DeleteIcon fontSize="small" />
             </IconButton>
           </Tooltip>
