@@ -8,10 +8,10 @@ import makeStyles from "@mui/styles/makeStyles";
 import { Theme } from "@mui/material/styles";
 import { useState } from "react";
 import { isEmpty } from "../utils";
-import Todo from "../models/Todo";
 
-// axios
-import axios from "../utils/axios";
+// redux
+import { useDispatch } from "react-redux";
+import { addTodo } from "../state/actions/todo";
 
 const useStyles = makeStyles((theme: Theme) => ({
   box: {
@@ -38,15 +38,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const initialFormData = {
-  topic: "",
+  title: "",
   description: "",
 };
 
 export default function NewTodo() {
   const [formData, setFormData] = useState<{
-    topic?: string;
+    title?: string;
     description?: string;
   }>(initialFormData);
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const handleChange = (e: any) => {
@@ -57,24 +58,28 @@ export default function NewTodo() {
     e.preventDefault();
 
     // validation
-    if (isEmpty(formData.topic)) return;
+    if (isEmpty(formData.title)) return;
 
-    // create the todo obj
-    const todo: Todo = {
-      title: formData.topic!,
-      description: formData.description,
-      createdAt: "",
-      isUpdated: false,
-    };
-    console.log(todo);
+    // dispatch the new todo
+    // this will add new todo to the db via api via redux store
+    dispatch(addTodo(formData.title!, formData.description));
 
-    // send to the api
-    axios
-      .post("/todos", { ...todo })
-      .then(() => {
-        console.log("Success");
-      })
-      .catch((err) => console.error(err));
+    // // create the todo obj
+    // const todo: Todo = {
+    //   title: formData.topic!,
+    //   description: formData.description,
+    //   createdAt: "",
+    //   isUpdated: false,
+    // };
+    // console.log(todo);
+
+    // // send to the api
+    // axios
+    //   .post("/todos", { ...todo })
+    //   .then(() => {
+    //     console.log("Success");
+    //   })
+    //   .catch((err) => console.error(err));
   };
 
   return (
@@ -89,10 +94,10 @@ export default function NewTodo() {
           autoComplete="off"
         >
           <TextField
-            name="topic"
-            label="Topic"
+            name="title"
+            label="Title"
             required
-            value={formData?.topic}
+            value={formData?.title}
             onChange={handleChange}
           />
           <TextField
