@@ -1,46 +1,51 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div style="display: flex; flex-direction: row">
+  <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white" alt="Redux" />
+  <img src="https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white" alt="Yarn" />
+  </div>
 
-## Available Scripts
+## Overview
+a simple todo app with frontend plus backend.
+[Todo-Frontend](https://github.com/TharindaPrabhath/todo-frontend)
+[Todo-backend](https://github.com/TharindaPrabhath/todo-backend)
 
-In the project directory, you can run:
+## Features
+- User login
+- User registration
+- Add todos
+- View added todos
+- Edit todos
+- Remove after completion
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+First, run the development server:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm run start
+# or
+yarn start
+```
 
-### `yarn test`
+Open [http://localhost:3000](http://localhost:3000) with your browser to interact with the platform.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+#### Login Page
+<img src="https://res.cloudinary.com/drifly/image/upload/v1654249547/GitHub/ToDo/Login_Page_wf42hy.png" width="500px" alt="Login Page"/>
 
-### `yarn build`
+#### SignUp Page
+<img src="https://res.cloudinary.com/drifly/image/upload/v1654249547/GitHub/ToDo/SignUp_Page_xzirjf.png" width="500px" alt="SignUp Page"/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Add Todo Page
+<img src="https://res.cloudinary.com/drifly/image/upload/v1654248948/GitHub/ToDo/Add_Todo_ydgg4m.png" width="500px" alt="Add Todo Page"/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contributing
+Forks are lovely. Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Roadmap
+I'm planning to extend the functionality by adding an profile for track each user's activity stuff like that & hope to deploy in the cloud.
 
-### `yarn eject`
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
